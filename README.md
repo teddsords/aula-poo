@@ -5,8 +5,10 @@ repositorio para manter os arquivos da materia de POO
 
 ## Comandos importantes para lembrar
 ### Clonar repositorio
-git clone (endereço)
 
+```
+git clone (endereço)
+```
 
 ### Para adicionar arquivos no stage
 git add (nome do arquivo)
