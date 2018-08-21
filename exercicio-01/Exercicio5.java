@@ -7,7 +7,7 @@ public class Exercicio5
 			textnum = args [1];
 			int salary = Integer.parseInt(textnum);
 
-			System.out.print ((salary / 22) * days);
+			System.out.print (salary  * (days/22.0));
 
 		}
 }
