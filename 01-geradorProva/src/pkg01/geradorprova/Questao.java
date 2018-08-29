@@ -11,7 +11,7 @@ package pkg01.geradorprova;
  */
 abstract class Questao 
 {
-    private String question;
+    private String  question;
     private double weight;
 
     /**

@@ -15,11 +15,15 @@ public class Prova {
     private int weight;
     private String place;
     private String date;
-
+    private Discursiva[] questionsTest1;
+    private Objetiva [] questionsTest2;
+            
     public Prova(String x) {
         this.courseName = x;
         this.weight = 10;
     }
+    
+    public Prova (){}
 
     public String obtemDetalhes() {
         String retur = "";
@@ -28,6 +32,25 @@ public class Prova {
         retur += "Place: " + this.getPlace() + "\n";
         retur += "Date: " + this.getDate() + "\n";
         return retur;
+    }
+    
+    public String obtemProvaImpressao ()
+    {
+        obtemDetalhes();
+        String print = "";
+        for (int i = 0; i < questionsTest1.length; i++)
+        {
+            print += questionsTest1[i].getWeight() + " ";
+            print += questionsTest1[i].getQuestion() + "\n";            
+        }
+        for (int i = 0; i < questionsTest2.length; i++)
+        {
+            print += questionsTest2[i].getWeight() + " ";
+            print += questionsTest2[i].getQuestion() + "\n";
+            System.out.println("\t");
+            print += questionsTest2[i].getOptions()+ "\n";
+        }
+        return print;
     }
 
     /**
@@ -84,5 +107,33 @@ public class Prova {
      */
     public void setDate(String date) {
         this.date = date;
+    }
+
+    /**
+     * @return the questionsTest1
+     */
+    public Discursiva[] getQuestionsTest1() {
+        return questionsTest1;
+    }
+
+    /**
+     * @param questionsTest1 the questionsTest1 to set
+     */
+    public void setQuestionsTest1(Discursiva[] questionsTest1) {
+        this.questionsTest1 = questionsTest1;
+    }
+
+    /**
+     * @return the questionsTest2
+     */
+    public Objetiva[] getQuestionsTest2() {
+        return questionsTest2;
+    }
+
+    /**
+     * @param questionsTest2 the questionsTest2 to set
+     */
+    public void setQuestionsTest2(Objetiva[] questionsTest2) {
+        this.questionsTest2 = questionsTest2;
     }
 }
