@@ -45,7 +45,8 @@ public class GeradorProva {
         aux = scan.nextInt();
         scan.nextLine();
         
-        Vector <Discursiva> auxiliar = new Vector <Discursiva> (5);
+        Vector <Discursiva> auxiliar = new Vector <Discursiva> (aux);
+        
 //        Discursiva[] auxiliar;
 //        auxiliar = new Discursiva [5];
         
