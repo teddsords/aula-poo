@@ -72,8 +72,6 @@ public class GeradorProva {
         }
         
         test.setQuestionsTest1(auxiliar);
-        
-        //System.out.println(test.getQuestionsTest1());
 
         do
         {
