@@ -110,7 +110,7 @@ public class GeradorProva {
             scan.nextLine();
             auxiliar2[i].setWeight(aux1);
             
-                    String[] choices = new String[5];
+            String[] choices = new String[5];
             for (int j = 0; j < 5; j++) 
             {
                 System.out.println("Please write down choice " + (j+1) + ":");
@@ -131,10 +131,9 @@ public class GeradorProva {
                 }while(aux < 1 || aux > 5);
             }
             auxiliar2[i].setCorrectAnswer(aux-1); 
-            //scan.nextLine();
         }
         test.setQuestionsTest2(auxiliar2);
-
+        System.out.print("\n");
         System.out.println(test.obtemProvaImpressao());
     }
 }

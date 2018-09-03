@@ -27,10 +27,13 @@ public class Prova {
 
     public String obtemDetalhes() {
         String retur = "";
+        retur += "\t\t\tUniversidade do Vale de Itajai\n";
         retur += "Course: " + this.getCourseName() + "\n";
         retur += "Weight: " + this.getWeight() + "\n";
         retur += "Place: " + this.getPlace() + "\n";
         retur += "Date: " + this.getDate() + "\n";
+        retur += "Please write your name:__________________________________________________________\n";
+        retur += "Follow instructions and write with cursive letter.\n";
         return retur;
     }
     
@@ -39,13 +42,14 @@ public class Prova {
         System.out.println(obtemDetalhes());
         String print = "";
         int number = 1;
+        print += "Please answer the short question answer in the space providen to you.\n";
         for (int i = 0; i < questionsTest1.length; i++) 
         {
            print += (number + ". [" + this.questionsTest1[i].getWeight() + "]. " + this.questionsTest1[i].getQuestion() + "\n\n\n\n\n");
            number++; 
         }
         String[] aux = new String [5];
-        
+        print += "Please mark with an X the correct answer.\n";
         for (int i = 0; i < questionsTest2.length; i++) 
         {
             print += (number + ". [" + this.questionsTest2[i].getWeight() + "]." + this.questionsTest2[i].getQuestion() + "\n");
