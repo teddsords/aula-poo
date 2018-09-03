@@ -41,4 +41,7 @@ abstract class Questao
     public void setWeight(double weight) {
         this.weight = weight;
     }
+    
+            
+
 }

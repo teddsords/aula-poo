@@ -38,17 +38,31 @@ public class Prova {
     {
         obtemDetalhes();
         String print = "";
-        for (int i = 0; i < questionsTest1.length; i++)
+        int number = 1;
+        for (int i = 0; i < questionsTest1.length; i++) 
         {
-            print += questionsTest1[i].getWeight() + " ";
-            print += questionsTest1[i].getQuestion() + "\n";            
+            
+           print = (number + "(" + questionsTest1[i].getWeight() + "). " + questionsTest1[i].getQuestion() + "\n");
+           System.out.println(print);
+           number++;
+//            print += questionsTest1[i].getWeight() + " ";
+//            print += questionsTest1[i].getQuestion() + "\n"; 
         }
-        for (int i = 0; i < questionsTest2.length; i++)
+        for (int i = 0; i < questionsTest2.length; i++) 
         {
-            print += questionsTest2[i].getWeight() + " ";
-            print += questionsTest2[i].getQuestion() + "\n";
-            System.out.println("\t");
-            print += questionsTest2[i].getOptions()+ "\n";
+            print = (number + "(" + questionsTest2[i].getWeight() + ") ." + questionsTest2[i].getQuestion());
+            System.out.println(print);
+            
+            String[] aux = new String [5];
+            aux = questionsTest2[i].getOptions();
+            
+            for (int a = 0; a < 5; a++)
+                System.out.println("[" + a + "]" + aux[a]);
+                
+//            print += questionsTest2.getWeight() + " ";
+//            print += questionsTest2.getQuestion() + "\n";
+//            System.out.println("\t");
+//            print += questionsTest2.getOptions() + "\n";
         }
         return print;
     }
@@ -108,7 +122,20 @@ public class Prova {
     public void setDate(String date) {
         this.date = date;
     }
+    
+    public void setSizeQuestionsTest1 (int x)
+    {
+        this.questionsTest1 = new Discursiva[x];
+        for (int i = 0; i < x; i++)
+            this.questionsTest1[i] = new Discursiva ();
+    }
 
+    public void setSizeQuestionsTest2 (int x)
+    {
+        this.questionsTest2 = new Objetiva[x];
+        for (int i = 0; i < x; i++)
+            this.questionsTest2[i] = new Objetiva();
+    }   
     /**
      * @return the questionsTest1
      */

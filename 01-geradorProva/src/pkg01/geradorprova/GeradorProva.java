@@ -14,89 +14,101 @@ import java.util.Vector;
  */
 public class GeradorProva {
 
-    public static void main(String[] args) 
-    {
-        Prova test = new Prova ();
+    public static void main(String[] args) {
+        Prova test = new Prova();
         Scanner scan = new Scanner(System.in);
         int aux;
         double aux1;
         String word = new String();
-        String[] choices = new String [5];
-        
+        String[] choices = new String[5];
+
         System.out.println("Please inform the course");
         word = scan.nextLine();
         test.setCourseName(word);
-        
-        
+
         System.out.println("Please inform the place where the test will take place");
         word = scan.nextLine();
         test.setPlace(word);
-        
+
         System.out.println("Please inform the date");
-        word =  scan.nextLine();
+        word = scan.nextLine();
         test.setDate(word);
-      
-        System.out.println("Please inform the wieght of the test");
+        
+        do
+        {
+        System.out.println("Please inform the weight of the test");
         aux = scan.nextInt();
         scan.nextLine();
+        }while (aux < 0 || aux > 10);
         test.setWeight(aux);
+
         
-        System.out.println ("How many short answer questions do you need?");
+        do
+        {
+        System.out.println("How many short answer questions do you need?");
         aux = scan.nextInt();
         scan.nextLine();
+        } while (aux > 10);
         
-        Vector <Discursiva> auxiliar = new Vector <Discursiva> (aux);
-        
-//        Discursiva[] auxiliar;
-//        auxiliar = new Discursiva [5];
-        
-        for (int i = 0; i < aux; i++)
-        {
-            System.out.println ("Please write down your question.");
-            word = scan.nextLine();
-            auxiliar.get(i).setQuestion(word);
+        Discursiva[] auxiliar;
+        auxiliar = new Discursiva[aux];
+                    
+        test.setSizeQuestionsTest1(aux);
+        for (int i = 0; i < aux; i++) {
+            auxiliar[i] = new Discursiva();
             
+            System.out.println("Please write down your question.");
+            word = scan.nextLine();
+            auxiliar[i].setQuestion(word);
+
             System.out.println("Please write down its weight");
             aux1 = scan.nextDouble();
             scan.nextLine();
-            auxiliar.get(i).setWeight(aux1);
-            
+            auxiliar[i].setWeight(aux1);
+
             System.out.println("Please write down the criteria of evaluation");
-            word = scan.nextLine ();
-            auxiliar.get(i).setCriteria(word); 
+            word = scan.nextLine();
+            auxiliar[i].setCriteria(word);
         }
-        //test.setQuestionsTest1(auxiliar);
         
+        test.setQuestionsTest1(auxiliar);
         
-        System.out.println ("How many multiple choice auxiliar do you need?");
+        //System.out.println(test.getQuestionsTest1());
+
+        do
+        {
+        System.out.println("How many multiple choice auxiliar do you need?");
         aux = scan.nextInt();
         scan.nextLine();
-        Vector <Objetiva> auxiliar2 = new Vector <Objetiva> (aux);
+        } while (aux > 10);
         
-        for (int i = 0; i < aux; i++)
-        {
-            System.out.println ("Please write down your question");
+       Objetiva [] auxiliar2;
+       auxiliar2 = new Objetiva [aux];
+       test.setSizeQuestionsTest2(aux);
+       
+        for (int i = 0; i < aux; i++) {
+            auxiliar2[i] = new Objetiva ();
+            System.out.println("Please write down your question");
             word = scan.nextLine();
-            auxiliar2.get(i).setQuestion(word);
-                        
+            auxiliar2[i].setQuestion(word);
+
             System.out.println("Please write down its weight");
             aux1 = scan.nextDouble();
             scan.nextLine();
-            auxiliar2.get(i).setWeight(aux1);
-            
-            for (int j = 0; j < 5; j++)
-            {
-                System.out.println("Please write down the choices");
+            auxiliar2[i].setWeight(aux1);
+
+            for (int j = 0; j < 5; j++) {
+                System.out.println("Please write down choice " + j + ":");
                 choices[j] = scan.nextLine();
             }
-            auxiliar2.get(i).setOptions(choices);
-            
-            System.out.println ("What is the correct answer");
+            auxiliar2[i].setOptions(choices);
+
+            System.out.println("What is the correct answer");
             aux = scan.nextInt();
-            auxiliar2.get(i).setCorrectAnswer(aux);
+            auxiliar2[i].setCorrectAnswer(aux);
         }
-//        test.setQuestionsTest2(auxiliar2);
-        
-        test.obtemProvaImpressao();
-    }   
+        test.setQuestionsTest2(auxiliar2);
+
+        System.out.println(test.obtemProvaImpressao());
+    }
 }

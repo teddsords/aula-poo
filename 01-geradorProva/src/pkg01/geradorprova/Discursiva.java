@@ -16,6 +16,7 @@ final class Discursiva extends Questao
     /**
      * @return the criteria
      */
+    
     public String getCriteria() {
         return criteria;
     }
@@ -23,7 +24,9 @@ final class Discursiva extends Questao
     /**
      * @param criteria the criteria to set
      */
+    
     public void setCriteria(String criteria) {
         this.criteria = criteria;
     }
+
 }
