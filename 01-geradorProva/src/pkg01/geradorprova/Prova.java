@@ -36,33 +36,24 @@ public class Prova {
     
     public String obtemProvaImpressao ()
     {
-        obtemDetalhes();
+        System.out.println(obtemDetalhes());
         String print = "";
         int number = 1;
         for (int i = 0; i < questionsTest1.length; i++) 
         {
-            
-           print = (number + "(" + questionsTest1[i].getWeight() + "). " + questionsTest1[i].getQuestion() + "\n");
-           System.out.println(print);
-           number++;
-//            print += questionsTest1[i].getWeight() + " ";
-//            print += questionsTest1[i].getQuestion() + "\n"; 
+           print += (number + ". [" + this.questionsTest1[i].getWeight() + "]. " + this.questionsTest1[i].getQuestion() + "\n\n\n\n\n");
+           number++; 
         }
+        String[] aux = new String [5];
+        
         for (int i = 0; i < questionsTest2.length; i++) 
         {
-            print = (number + "(" + questionsTest2[i].getWeight() + ") ." + questionsTest2[i].getQuestion());
-            System.out.println(print);
-            
-            String[] aux = new String [5];
-            aux = questionsTest2[i].getOptions();
+            print += (number + ". [" + this.questionsTest2[i].getWeight() + "]." + this.questionsTest2[i].getQuestion() + "\n");
+            aux = this.questionsTest2[i].getOptions();
             
             for (int a = 0; a < 5; a++)
-                System.out.println("[" + a + "]" + aux[a]);
-                
-//            print += questionsTest2.getWeight() + " ";
-//            print += questionsTest2.getQuestion() + "\n";
-//            System.out.println("\t");
-//            print += questionsTest2.getOptions() + "\n";
+                print += ("[" + (a+1) + "]" + aux[a] + "\n");
+            number++;
         }
         return print;
     }
