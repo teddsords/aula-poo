@@ -39,24 +39,20 @@ public class Prova {
     
     public String obtemProvaImpressao ()
     {
-        System.out.println(obtemDetalhes());
         String print = "";
+        print += (obtemDetalhes());
         int number = 1;
-        print += "Please answer the short question answer in the space providen to you.\n";
-        for (int i = 0; i < questionsTest1.length; i++) 
+    
+       for (int i = 0; i < questionsTest1.length; i++)
+       {
+           print += number;
+           print += questionsTest1[i].returningQuestion();
+           number++;
+       }
+        for (int i = 0; i < questionsTest2.length; i++)
         {
-           print += (number + ". [" + this.questionsTest1[i].getWeight() + "]. " + this.questionsTest1[i].getQuestion() + "\n\n\n\n\n");
-           number++; 
-        }
-        String[] aux = new String [5];
-        print += "Please mark with an X the correct answer.\n";
-        for (int i = 0; i < questionsTest2.length; i++) 
-        {
-            print += (number + ". [" + this.questionsTest2[i].getWeight() + "]." + this.questionsTest2[i].getQuestion() + "\n");
-            aux = this.questionsTest2[i].getOptions();
-            
-            for (int a = 0; a < 5; a++)
-                print += ("[" + (a+1) + "]" + aux[a] + "\n");
+            print += number;
+            print += questionsTest2[i].returningQuestion();
             number++;
         }
         return print;

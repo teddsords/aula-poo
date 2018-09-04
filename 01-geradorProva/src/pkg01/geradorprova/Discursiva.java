@@ -28,5 +28,14 @@ final class Discursiva extends Questao
     public void setCriteria(String criteria) {
         this.criteria = criteria;
     }
+    
+    @Override 
+    public String returningQuestion()
+    {
+        String print = "";
+        print += "Please answer the short question answer in the space providen to you.\n";
+        print += (". [" + this.getWeight() + "]. " + this.getQuestion() + "\n\n\n\n\n");
+        return print;
+    }
 
 }

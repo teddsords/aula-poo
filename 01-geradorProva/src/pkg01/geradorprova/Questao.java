@@ -14,6 +14,7 @@ abstract class Questao
     private String  question;
     private double weight;
 
+    abstract String returningQuestion();
     /**
      * @return the question
      */

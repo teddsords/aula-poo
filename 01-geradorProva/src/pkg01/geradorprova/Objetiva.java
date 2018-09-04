@@ -46,4 +46,20 @@ final class Objetiva extends Questao
     public void setCorrectAnswer(int correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
+    
+    @Override
+    public String returningQuestion ()
+    {
+        String[] aux = new String[5];
+        String print = "";
+        print += "Please mark with an X the correct answer.\n";
+
+        print += (". [" + this.getWeight() + "]." + this.getQuestion() + "\n");
+        aux = this.getOptions();
+
+        for (int a = 0; a < 5; a++)
+            print += ("[" + (a + 1) + "]" + aux[a] + "\n");
+        
+        return print;
+    }
 }
