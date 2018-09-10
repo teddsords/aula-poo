@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package pkg01.geradorprova;
-
 import java.util.Scanner;
-
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.util.ArrayList;
 /**
  *
  * @author 6507050
@@ -16,11 +18,10 @@ public class GeradorProva {
     public static void main(String[] args) {
         Prova test = new Prova();
         Scanner scan = new Scanner(System.in);
-        int aux = 0, aux2 = 0;
-        double aux1;
+        int aux1;
         String word = new String();
-
-
+        File file = new File ("test.txt");
+        
         System.out.println("Please inform the course");
         word = scan.nextLine();
         test.setCourseName(word);
@@ -34,106 +35,145 @@ public class GeradorProva {
         test.setDate(word);
 
         System.out.println("Please inform the weight of the test");
-        while (!scan.hasNextInt()) 
+        while (true)
         {
-            System.out.println("Error. Please write a number.");
-            scan.next();            
-        }
-        test.setWeight(scan.nextInt());
-        scan.nextLine();
-
-        System.out.println("How many short answer questions do you need?");
-        while (!scan.hasNextInt()) 
-        {
-            System.out.println("Error. Please write a number.");
-            scan.next();           
-        }
-        aux = scan.nextInt();
-        test.setSizeQuestionsTest1(aux);
-        scan.nextLine();
-
-        Discursiva[] auxiliar;
-        auxiliar = new Discursiva[aux];
-
-        test.setSizeQuestionsTest1(aux);
-        for (int i = 0; i < auxiliar.length; i++) {
-            auxiliar[i] = new Discursiva();
-
-            System.out.println("Please write down your question.");
-            word = scan.nextLine();
-            auxiliar[i].setQuestion(word);
-
-            System.out.println("Please write down its weight");
-            while(!scan.hasNextDouble())
+            try
             {
-                System.out.println("Error. Please write a number.");
-                scan.next();
+                aux1 = Integer.parseInt(scan.nextLine()); // porque no funciona con test.setWeight(scan.nextInt()); ?
+                if (aux1 < 1)
+                    throw new Exception();
+                break;
             }
-            aux1 = scan.nextDouble();
-            scan.nextLine();
-            auxiliar[i].setWeight(aux1);
-
-            System.out.println("Please write down the criteria of evaluation");
-            word = scan.nextLine();
-            auxiliar[i].setCriteria(word);
+            catch (Exception e){
+                System.out.println(e.getMessage());
+                System.out.println("Please write again the weight.");
+                continue;
+            }
         }
-        test.setQuestionsTest1(auxiliar);
-
-        System.out.println("How many multiple choice do you need?");
-        while (!scan.hasNextInt()) 
-        {
-            System.out.println("Error. Please write a number.");
-            scan.next();            
-        }
-        aux2 = scan.nextInt();
-        test.setSizeQuestionsTest2(aux2);
-        scan.nextLine();
-
-        Objetiva[] auxiliar2;
-        auxiliar2 = new Objetiva[aux2];
-        test.setSizeQuestionsTest2(aux2);
+        test.setWeight(aux1);
         
-        for (int i = 0; i < aux2; i++)
+        String cont;
+        ArrayList <Questao> questions = new ArrayList <Questao> (); 
+        do
         {
-            auxiliar2[i] = new Objetiva();
-            System.out.println("Please write down your question");
-            word = scan.nextLine();
-            auxiliar2[i].setQuestion(word);
-
-            System.out.println("Please write down its weight");
-            while (!scan.hasNextDouble())
+            do
             {
-                System.out.println ("Error. please write a number.");
-                scan.next();
-            }
-            aux1 = scan.nextDouble();
-            scan.nextLine();
-            auxiliar2[i].setWeight(aux1);
+            System.out.println ("Please write S for a short answer question and"
+                    + " M for multiple choice for question");
+            cont = scan.nextLine();
+            }while (cont.equals("S") != true && cont.equals("s") != true && 
+                    cont.equals("M") != true && cont.equals("m") !=true);
             
-            String[] choices = new String[5];
-            for (int j = 0; j < 5; j++) 
+            if (cont.equals("S") == true || cont.equals("s") == true)
             {
-                System.out.println("Please write down choice " + (j+1) + ":");
-                choices[j] = scan.nextLine();
-            }
-            auxiliar2[i].setOptions(choices);
-
-            System.out.println("What is the correct answer");
-            aux = scan.nextInt();
-            scan.nextLine();
-            if (aux < 1 || aux > 5)
-            {
-                do
+                Discursiva aux = new Discursiva();
+                
+                System.out.println("Please write down your question.");
+                word = scan.nextLine();
+                aux.setQuestion(word);
+                
+                System.out.println("Please write down the weight.");
+                while(true)
                 {
-                    System.out.println("Error. Please write down a number between 1 and 5.");
-                    aux = scan.nextInt();
-                    scan.nextLine();
-                }while(aux < 1 || aux > 5);
+                    try
+                    {
+                        aux1= Integer.parseInt(scan.nextLine());
+                        if (aux1 < 1)
+                            throw new Exception();
+                        break;
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println("Exception thrown " + e.getMessage());
+                        System.out.println("Please write again weight.");
+                    }
+                }
+                aux.setWeight(aux1);
+                
+                System.out.println("Please write down the criteria of evaluation");
+                word = scan.nextLine();
+                aux.setCriteria(word);
+                
+                questions.add(aux);
+            } 
+            else
+            {
+                Objetiva aux2 = new Objetiva();
+                System.out.println("Please write down your question");
+                word = scan.nextLine();
+                aux2.setQuestion(word);
+                
+                System.out.println("Please write down the weight.");
+                while(true)
+                {
+                    try
+                    {
+                        aux1= Integer.parseInt(scan.nextLine());
+                        if (aux1 < 1)
+                            throw new Exception();
+                        break;
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println("Exception thrown " + e.getMessage());
+                        System.out.println("Please write again weight.");
+                    }
+                }
+                aux2.setWeight(aux1);
+                
+                String[] options = new String[5];
+                
+                for (int i = 0; i < 5; i++)
+                {
+                    System.out.println("Please write choice " + (i+1) + ":");
+                    options[i] = scan.nextLine();
+                }
+                aux2.setOptions(options);
+                
+                System.out.println("Please write the correct answer.");
+                while (true)
+                {
+                    try
+                    {
+                        aux1 = Integer.parseInt(scan.nextLine());
+                        if (aux1 < 1 || aux1 > 5)
+                            throw new IllegalArgumentException();
+                        break;
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println ("Exception thrown " + e.getMessage());
+                        System.out.println("Please write again the correct answer.");
+                    }
+                }
+                aux2.setCorrectAnswer(aux1-1);
+                questions.add(aux2);
             }
-            auxiliar2[i].setCorrectAnswer(aux-1); 
-        }
-        test.setQuestionsTest2(auxiliar2);
-        System.out.print("\n");
+         
+        System.out.println("Do you need another question?");   
+        cont = scan.nextLine();   
+        }while (cont.equals("Y") == true || cont.equals("y") == true || cont.equals("Yes") == true
+                || cont.equals("yes") == true || cont.equals("YES") == true); 
+        
+        test.setQuestions(questions);
+        
         System.out.println(test.obtemProvaImpressao());
+        
+        try
+        {
+            if (!file.exists())
+                file.createNewFile();
+            
+            FileWriter fw = new FileWriter (file, true);
+            BufferedWriter bw = new BufferedWriter (fw);
+           
+            bw.write(test.obtemProvaImpressao()); // porque esta imprimindo tudo na mesma linha?
+            
+            bw.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println("You got an error");
+        }
     }
 }

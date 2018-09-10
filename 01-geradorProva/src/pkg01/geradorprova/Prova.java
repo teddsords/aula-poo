@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package pkg01.geradorprova;
-
+import java.util.ArrayList;
 /**
  *
  * @author 6507050
@@ -15,8 +15,7 @@ public class Prova {
     private int weight;
     private String place;
     private String date;
-    private Discursiva[] questionsTest1;
-    private Objetiva [] questionsTest2;
+    private ArrayList <Questao> questions;
             
     public Prova(String x) {
         this.courseName = x;
@@ -43,18 +42,15 @@ public class Prova {
         print += (obtemDetalhes());
         int number = 1;
     
-       for (int i = 0; i < questionsTest1.length; i++)
+       for (int i = 0; i < this.questions.size(); i++)
        {
+           if (i == 0)
+               print += "Please answer the short question answer in the space providen to you.\n";
+           
            print += number;
-           print += questionsTest1[i].returningQuestion();
+           print += this.questions.get(i).returningQuestion();
            number++;
        }
-        for (int i = 0; i < questionsTest2.length; i++)
-        {
-            print += number;
-            print += questionsTest2[i].returningQuestion();
-            number++;
-        }
         return print;
     }
 
@@ -114,44 +110,54 @@ public class Prova {
         this.date = date;
     }
     
-    public void setSizeQuestionsTest1 (int x)
+    public ArrayList<Questao> getQuestions ()
     {
-        this.questionsTest1 = new Discursiva[x];
-        for (int i = 0; i < x; i++)
-            this.questionsTest1[i] = new Discursiva ();
+        return this.questions;
     }
-
-    public void setSizeQuestionsTest2 (int x)
+    
+    public void setQuestions (ArrayList <Questao> x)
     {
-        this.questionsTest2 = new Objetiva[x];
-        for (int i = 0; i < x; i++)
-            this.questionsTest2[i] = new Objetiva();
-    }   
-    /**
-     * @return the questionsTest1
-     */
-    public Discursiva[] getQuestionsTest1() {
-        return questionsTest1;
+        this.questions = x;
     }
-
-    /**
-     * @param questionsTest1 the questionsTest1 to set
-     */
-    public void setQuestionsTest1(Discursiva[] questionsTest1) {
-        this.questionsTest1 = questionsTest1;
-    }
-
-    /**
-     * @return the questionsTest2
-     */
-    public Objetiva[] getQuestionsTest2() {
-        return questionsTest2;
-    }
-
-    /**
-     * @param questionsTest2 the questionsTest2 to set
-     */
-    public void setQuestionsTest2(Objetiva[] questionsTest2) {
-        this.questionsTest2 = questionsTest2;
-    }
+    
+//    public void setSizeQuestionsTest1 (int x)
+//    {
+//        this.questionsTest1 = new Discursiva[x];
+//        for (int i = 0; i < x; i++)
+//            this.questionsTest1[i] = new Discursiva ();
+//    }
+//
+//    public void setSizeQuestionsTest2 (int x)
+//    {
+//        this.questionsTest2 = new Objetiva[x];
+//        for (int i = 0; i < x; i++)
+//            this.questionsTest2[i] = new Objetiva();
+//    }   
+//    /**
+//     * @return the questionsTest1
+//     */
+//    public Discursiva[] getQuestionsTest1() {
+//        return questionsTest1;
+//    }
+//
+//    /**
+//     * @param questionsTest1 the questionsTest1 to set
+//     */
+//    public void setQuestionsTest1(Discursiva[] questionsTest1) {
+//        this.questionsTest1 = questionsTest1;
+//    }
+//
+//    /**
+//     * @return the questionsTest2
+//     */
+//    public Objetiva[] getQuestionsTest2() {
+//        return questionsTest2;
+//    }
+//
+//    /**
+//     * @param questionsTest2 the questionsTest2 to set
+//     */
+//    public void setQuestionsTest2(Objetiva[] questionsTest2) {
+//        this.questionsTest2 = questionsTest2;
+//    }
 }

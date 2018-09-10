@@ -52,7 +52,6 @@ final class Objetiva extends Questao
     {
         String[] aux = new String[5];
         String print = "";
-        print += "Please mark with an X the correct answer.\n";
 
         print += (". [" + this.getWeight() + "]." + this.getQuestion() + "\n");
         aux = this.getOptions();
