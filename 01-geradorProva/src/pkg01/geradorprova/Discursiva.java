@@ -33,7 +33,7 @@ final class Discursiva extends Questao
     public String returningQuestion()
     {
         String print = "";
-        print += (". [" + this.getWeight() + "]. " + this.getQuestion() + "\n\n\n\n\n");
+        print += (". [" + this.getWeight() + "]. " + this.getQuestion() + "\r\n\r\n\r\n\r\n\r\n");
         return print;
     }
 

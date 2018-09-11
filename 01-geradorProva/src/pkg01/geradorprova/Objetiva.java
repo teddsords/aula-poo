@@ -53,11 +53,11 @@ final class Objetiva extends Questao
         String[] aux = new String[5];
         String print = "";
 
-        print += (". [" + this.getWeight() + "]." + this.getQuestion() + "\n");
+        print += (". [" + this.getWeight() + "]." + this.getQuestion() + "\r\n");
         aux = this.getOptions();
 
         for (int a = 0; a < 5; a++)
-            print += ("[" + (a + 1) + "]" + aux[a] + "\n");
+            print += ("[" + (a + 1) + "]" + aux[a] + "\r\n");
         
         return print;
     }

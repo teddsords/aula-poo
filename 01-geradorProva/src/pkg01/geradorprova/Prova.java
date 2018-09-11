@@ -26,13 +26,13 @@ public class Prova {
 
     public String obtemDetalhes() {
         String retur = "";
-        retur += "\t\t\tUniversidade do Vale de Itajai\n";
-        retur += "Course: " + this.getCourseName() + "\n";
-        retur += "Weight: " + this.getWeight() + "\n";
-        retur += "Place: " + this.getPlace() + "\n";
-        retur += "Date: " + this.getDate() + "\n";
-        retur += "Please write your name:__________________________________________________________\n";
-        retur += "Follow instructions and write with cursive letter.\n";
+        retur += "\t\t\tUniversidade do Vale de Itajai\r\n";
+        retur += "Course: " + this.getCourseName() + "\r\n";
+        retur += "Weight: " + this.getWeight() + "\r\n";
+        retur += "Place: " + this.getPlace() + "\r\n";
+        retur += "Date: " + this.getDate() + "\r\n";
+        retur += "Please write your name:__________________________________________________________\r\n";
+        retur += "Follow instructions and write with cursive letter.\r\n";
         return retur;
     }
     
@@ -43,11 +43,8 @@ public class Prova {
         int number = 1;
     
        for (int i = 0; i < this.questions.size(); i++)
-       {
-           if (i == 0)
-               print += "Please answer the short question answer in the space providen to you.\n";
-           
-           print += number;
+       {       
+            print += number;
            print += this.questions.get(i).returningQuestion();
            number++;
        }
