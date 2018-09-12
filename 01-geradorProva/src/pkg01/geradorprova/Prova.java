@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Prova {
 
     private String courseName;
-    private int weight;
+    private double weight;
     private String place;
     private String date;
     private ArrayList <Questao> questions;
@@ -68,14 +68,14 @@ public class Prova {
     /**
      * @return the weight
      */
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
     /**
      * @param weight the weight to set
      */
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 

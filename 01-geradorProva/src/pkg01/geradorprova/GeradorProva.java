@@ -18,9 +18,8 @@ public class GeradorProva {
     public static void main(String[] args) {
         Prova test = new Prova();
         Scanner scan = new Scanner(System.in);
-        int aux1;
+        double aux1;
         String word = new String();
-        File file = new File ("test.txt");
         
         System.out.println("Please inform the course");
         word = scan.nextLine();
@@ -39,7 +38,7 @@ public class GeradorProva {
         {
             try
             {
-                aux1 = Integer.parseInt(scan.nextLine()); // porque no funciona con test.setWeight(scan.nextInt()); ?
+                aux1 = Double.parseDouble(scan.nextLine()); // porque no funciona con test.setWeight(scan.nextInt()); ?
                 if (aux1 < 1)
                     throw new Exception();
                 break;
@@ -61,6 +60,7 @@ public class GeradorProva {
             System.out.println ("Please write S for a short answer question and"
                     + " M for multiple choice for question");
             cont = scan.nextLine();
+            
             }while (cont.equals("S") != true && cont.equals("s") != true && 
                     cont.equals("M") != true && cont.equals("m") !=true);
             
@@ -77,7 +77,7 @@ public class GeradorProva {
                 {
                     try
                     {
-                        aux1= Integer.parseInt(scan.nextLine());
+                        aux1= Double.parseDouble(scan.nextLine());
                         if (aux1 < 1)
                             throw new Exception();
                         break;
@@ -108,7 +108,7 @@ public class GeradorProva {
                 {
                     try
                     {
-                        aux1= Integer.parseInt(scan.nextLine());
+                        aux1= Double.parseDouble(scan.nextLine());
                         if (aux1 < 1)
                             throw new Exception();
                         break;
@@ -135,7 +135,7 @@ public class GeradorProva {
                 {
                     try
                     {
-                        aux1 = Integer.parseInt(scan.nextLine());
+                        aux1 = Double.parseDouble(scan.nextLine());
                         if (aux1 < 1 || aux1 > 5)
                             throw new IllegalArgumentException();
                         break;
@@ -146,7 +146,7 @@ public class GeradorProva {
                         System.out.println("Please write again the correct answer.");
                     }
                 }
-                aux2.setCorrectAnswer(aux1-1);
+                aux2.setCorrectAnswer((int) aux1-1);
                 questions.add(aux2);
             }
          
@@ -159,6 +159,11 @@ public class GeradorProva {
         
         System.out.println(test.obtemProvaImpressao());
         
+        System.out.println ("What will be the name of the file?");
+        word = scan.nextLine();
+        
+                
+        File file = new File (word + ".txt");
         try
         {
             if (!file.exists())
@@ -167,7 +172,7 @@ public class GeradorProva {
             FileWriter fw = new FileWriter (file, true);
             BufferedWriter bw = new BufferedWriter (fw);
            
-            bw.write(test.obtemProvaImpressao()); // porque esta imprimindo tudo na mesma linha?
+            bw.write(test.obtemProvaImpressao()); 
             
             bw.close();
         }

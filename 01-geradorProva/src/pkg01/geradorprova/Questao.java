@@ -12,7 +12,7 @@ package pkg01.geradorprova;
 abstract class Questao 
 {
     private String  question;
-    private int weight;
+    private double weight;
 
     abstract String returningQuestion();
     /**
@@ -32,14 +32,14 @@ abstract class Questao
     /**
      * @return the weight
      */
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
     /**
      * @param weight the weight to set
      */
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 }
