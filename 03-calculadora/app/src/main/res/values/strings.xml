@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="Length">Length</string>
+    <string name="Height">Height</string>
+    <string name="Width">Width</string>
+    <string name="Calculate">Calculate</string>
+    <string name="Error">Please inform a</string>
+    <string name="Meter">Meters squared</string>
+    <string name="Volume">Volume</string>
+</resources>
