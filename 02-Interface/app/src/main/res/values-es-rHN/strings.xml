@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Criar Nuevo Contacto</string>
+    <string name="Name">Nombre</string>
+    <string name="Phone">Teléfono</string>
+    <string name="Email">Correo electrónico</string>
+</resources>
