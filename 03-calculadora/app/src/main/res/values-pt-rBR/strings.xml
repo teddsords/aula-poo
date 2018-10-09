@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Calculadora</string>
+    <string name="app_name">Calculadora de Volume</string>
     <string name="Length">Comprimento</string>
     <string name="Height">Altura</string>
     <string name="Width">Largura</string>

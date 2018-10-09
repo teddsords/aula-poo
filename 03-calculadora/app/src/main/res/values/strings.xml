@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Calculator</string>
+    <string name="app_name">Volume Calculator</string>
     <string name="Length">Length</string>
     <string name="Height">Height</string>
     <string name="Width">Width</string>
