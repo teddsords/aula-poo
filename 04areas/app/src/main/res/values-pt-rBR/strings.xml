@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">04-Áreas</string>
+    <string name="rectangle">Retângulo</string>
+    <string name="triangle">Triângulo</string>
+    <string name="circle">Círculo</string>
+    <string name="height">Altura</string>
+    <string name="width">Largo</string>
+    <string name="calculate">Calcular</string>
+    <string name="base">Base</string>
+    <string name="radius">Rádio</string>
+    <string name="length">Comprimento</string>
+    <string name="squaremetre">Metros quadrados</string>
+    <string name="errorW">Por favor informe o largo</string>
+    <string name="errorL">Por favor informe o comprimento</string>
+</resources>

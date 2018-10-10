@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">04-areas</string>
+    <string name="rectangle">Rectangle</string>
+    <string name="triangle">Triangle</string>
+    <string name="circle">Circle</string>
+    <string name="height">Height</string>
+    <string name="width">Width</string>
+    <string name="calculate">Calculate</string>
+    <string name="base">Base</string>
+    <string name="radius">Radius</string>
+    <string name="squaremetre">Square Metre</string>
+    <string name="length">Length</string>
+    <string name="errorW">Please inform a width</string>
+    <string name="errorL">Please inform a length</string>
+</resources>
