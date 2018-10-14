@@ -1,6 +1,9 @@
 package teddy.aula.br.a04_areas;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +18,7 @@ public class CalculateRectangleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculate_rectangle);
     }
 
-    public void onClickCalculate (View v)
+    public void onClickCalculateRectangle (View v)
     {
         EditText etLength = findViewById(R.id.etLengthRectangle);
         EditText etWidth = findViewById(R.id.etWidthRectangle);
@@ -31,7 +34,8 @@ public class CalculateRectangleActivity extends AppCompatActivity {
             intentOpenScreenResultRectangle.putExtra("widthD",widthD );
 
             this.startActivity(intentOpenScreenResultRectangle);
-        }catch (Exception e)
+        }
+        catch (Exception e)
         {
             Toast.makeText(this.getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
             String string = getString(R.string.errorL);
