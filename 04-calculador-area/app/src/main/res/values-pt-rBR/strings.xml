@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculadora de Áreas</string>
+    <string name="rectangle">Retângulo</string>
+    <string name="triangle">Triângulo</string>
+    <string name="circle">Círculo</string>
+    <string name="height">Altura</string>
+    <string name="width">Largura</string>
+    <string name="calculate">Calcular</string>
+    <string name="base">Base</string>
+    <string name="radius">Raio</string>
+    <string name="length">Comprimento</string>
+    <string name="squaremetre">Metros quadrados</string>
+    <string name="squaremetersingular">Metro quadrado</string>
+    <string name="errorW">Por favor informe a largura</string>
+    <string name="errorL">Por favor informe o comprimento</string>
+    <string name="errorH">Por favor informe a altura</string>
+    <string name="errorB">Por favor informe a base</string>
+    <string name="errorR">Por favor informe o raio</string>
+    <string name="Finish">Finalizar</string>
+</resources>

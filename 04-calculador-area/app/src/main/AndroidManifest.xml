@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="teddy.aula.br.a04_calculadora_area">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CalculateRectangleActivity" />
+        <activity android:name=".CalculateTriangleActivity" />
+        <activity android:name=".CalculateCircleActivity" />
+        <activity android:name=".RectangleResultActivity" />
+        <activity android:name=".TriangleResultActivity" />
+        <activity android:name=".CircleResultActivity"></activity>
+    </application>
+
+</manifest>
