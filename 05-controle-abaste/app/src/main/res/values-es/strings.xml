@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rendimiento Vehicular</string>
+    <string name="save">Salvar</string>
+    <string name="current_fuel_economy">Rendimiento Vehicular Actual:</string>
+    <string name="kmperliter">Kilometros por litro</string>
+    <string name="view_list">Visualizar Historial</string>
+    <string name="Error">Por favor informe la cantidad correctad de kilometros</string>
+    <string name="ActualKms">Kilometraje Actual</string>
+    <string name="Liters">Litros Comprados</string>
+    <string name="Date">Fecha</string>
+    <string name="GasStation">Gasolinera</string>
+    <string name="Unavailable">Indisponible</string>
+</resources>

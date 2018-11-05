@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Fuel Economy</string>
+    <string name="save">Save</string>
+    <string name="current_fuel_economy">Current Fuel Economy:</string>
+    <string name="kmperliter">Kilometers per liter</string>
+    <string name="view_list">View History</string>
+    <string name="Error">Please inform the correct amount of kilometers</string>
+    <string name="ActualKms">Actual Kilometers</string>
+    <string name="Liters">Liters Bought</string>
+    <string name="Date">Date</string>
+    <string name="GasStation">Gas Station</string>
+    <string name="Unavailable">Unavailable</string>
+</resources>
