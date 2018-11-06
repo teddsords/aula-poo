@@ -15,6 +15,7 @@ public class AddFillUpActivity extends AppCompatActivity {
     private EditText etActualKms;
     private EditText etPurchasedLiters;
     private EditText etDate;
+    private double oldKm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class AddFillUpActivity extends AppCompatActivity {
         etActualKms = findViewById(R.id.etActualKilometers);
         etPurchasedLiters = findViewById(R.id.etLitersBought);
         etDate = findViewById(R.id.etPurchaseDate);
+
+        oldKm = this.getIntent().getDoubleExtra("Old km", -1);
     }
 
     public void onClickSave(View v)
@@ -40,6 +43,7 @@ public class AddFillUpActivity extends AppCompatActivity {
         {
             if(etActualKms.getText().toString().equals(""))
                 this.etActualKms.setError(getString(R.string.error_kilometers));
+
             if (etPurchasedLiters.getText().toString().equals(""))
                 this.etPurchasedLiters.setError(getString(R.string.error_liter));
             if (etDate.getText().toString().equals(""))
@@ -47,7 +51,11 @@ public class AddFillUpActivity extends AppCompatActivity {
 
             return;
         }
-
+        if (Double.parseDouble(etActualKms.getText().toString()) < oldKm)
+        {
+            etActualKms.setError(getString(R.string.Error));
+            return;
+        }
         fillUp.setKilometers(Double.parseDouble(etActualKms.getText().toString()));
         fillUp.setLiters(Double.parseDouble(etPurchasedLiters.getText().toString()));
         fillUp.setDate(etDate.getText().toString());

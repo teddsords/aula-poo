@@ -28,10 +28,11 @@ public class listViewHolder extends RecyclerView.ViewHolder {
         String kilometers = String.valueOf(fillUp.getKilometers()) + " Kms";
         String liters = String.valueOf(fillUp.getLiters()) + " L";
         String gasStation = fillUp.getGasStation();
+        String date = "Date: " + String.valueOf(fillUp.getDate());
 
         this.tvLiters.setText(liters);
         this.tvKilometers.setText(kilometers);
-        this.tvDate.setText(fillUp.getDate());
+        this.tvDate.setText(date);
 
         if (gasStation.equals("Ipiranga"))
             ivGasStation.setImageResource(R.drawable.ipiranga);

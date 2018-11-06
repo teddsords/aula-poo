@@ -28,6 +28,8 @@ public class ListActivity extends AppCompatActivity {
     public void onClickFAB (View v)
     {
         Intent intent = new Intent(this.getApplicationContext(), AddFillUpActivity.class);
+        if(this.adapter.list.size()>0)
+            intent.putExtra("Old km", this.adapter.list.get(this.adapter.list.size()-1).getKilometers());
         startActivityForResult(intent, ADD_FILLUP);
     }
 
