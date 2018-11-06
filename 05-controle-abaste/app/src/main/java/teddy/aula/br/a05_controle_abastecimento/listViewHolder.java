@@ -26,7 +26,7 @@ public class listViewHolder extends RecyclerView.ViewHolder {
     public void updateDrawer (FillUp fillUp)
     {
         String kilometers = String.valueOf(fillUp.getKilometers()) + " Kms";
-        String liters = String.valueOf(fillUp.getLiters()) + "L";
+        String liters = String.valueOf(fillUp.getLiters()) + " L";
         String gasStation = fillUp.getGasStation();
 
         this.tvLiters.setText(liters);
@@ -34,12 +34,13 @@ public class listViewHolder extends RecyclerView.ViewHolder {
         this.tvDate.setText(fillUp.getDate());
 
         if (gasStation.equals("Ipiranga"))
-            ivGasStation.setImageDrawable(ContextCompat.getDrawable(App.getContext(), R.drawable.ipiranga));
+            ivGasStation.setImageResource(R.drawable.ipiranga);
         else if (gasStation.equals("Petrobras"))
-            ivGasStation.setImageDrawable(ContextCompat.getDrawable(App.getContext(),R.drawable.petrobras));
+            ivGasStation.setImageResource(R.drawable.petrobras);
         else if (gasStation.equals("Shell"))
-            ivGasStation.setImageDrawable(ContextCompat.getDrawable(App.getContext(),R.drawable.shell));
+            ivGasStation.setImageResource(R.drawable.shell);
+
         else
-            ivGasStation.setImageDrawable(ContextCompat.getDrawable(App.getContext(),R.drawable.texaco));
+            ivGasStation.setImageResource(R.drawable.texaco);
     }
 }

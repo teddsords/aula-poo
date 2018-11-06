@@ -5,10 +5,13 @@
     <string name="current_fuel_economy">Rendimiento Vehicular Actual:</string>
     <string name="kmperliter">Kilometros por litro</string>
     <string name="view_list">Visualizar Historial</string>
-    <string name="Error">Por favor informe la cantidad correctad de kilometros</string>
+    <string name="Error">Por favor informe la cantidad correcta de kilometros</string>
     <string name="ActualKms">Kilometraje Actual</string>
     <string name="Liters">Litros Comprados</string>
     <string name="Date">Fecha</string>
     <string name="GasStation">Gasolinera</string>
     <string name="Unavailable">Indisponible</string>
+    <string name="error_kilometers">Por favor informe un valor para kilometros</string>
+    <string name="error_liter">Por favor informe un valor para litros</string>
+    <string name="error_date">Por favor informe una fecha</string>
 </resources>

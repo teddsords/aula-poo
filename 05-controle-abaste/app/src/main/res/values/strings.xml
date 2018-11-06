@@ -10,4 +10,13 @@
     <string name="Date">Date</string>
     <string name="GasStation">Gas Station</string>
     <string name="Unavailable">Unavailable</string>
+    <string name="error_kilometers">Please inform a value for kilometers</string>
+    <string name="error_liter">Please inform a value for liters</string>
+    <string name="error_date">Please inform a date</string>
+    <string-array name="GasStations" translatable="false">
+        <item>Ipiranga</item>
+        <item>Petrobras</item>
+        <item>Shell</item>
+        <item>Texaco</item>
+    </string-array>
 </resources>

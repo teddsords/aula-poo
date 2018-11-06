@@ -6,12 +6,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddFillUpActivity extends AppCompatActivity {
 
-
-    private String[] gasStations = new String[]{"Ipiranga", "Petrobras", "Shell", "Texaco"};
     private Spinner sGasStations;
     private EditText etActualKms;
     private EditText etPurchasedLiters;
@@ -22,8 +21,7 @@ public class AddFillUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_fill_up);
 
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, gasStations);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getApplicationContext(),R.array.GasStations, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         sGasStations = (Spinner) findViewById(R.id.sGasStations);
@@ -37,6 +35,18 @@ public class AddFillUpActivity extends AppCompatActivity {
     public void onClickSave(View v)
     {
         FillUp fillUp = new FillUp();
+
+        if (etActualKms.getText().toString().equals("") || etPurchasedLiters.getText().toString().equals("") || etDate.getText().toString().equals(""))
+        {
+            if(etActualKms.getText().toString().equals(""))
+                this.etActualKms.setError(getString(R.string.error_kilometers));
+            if (etPurchasedLiters.getText().toString().equals(""))
+                this.etPurchasedLiters.setError(getString(R.string.error_liter));
+            if (etDate.getText().toString().equals(""))
+                this.etDate.setError(getString(R.string.error_date));
+
+            return;
+        }
 
         fillUp.setKilometers(Double.parseDouble(etActualKms.getText().toString()));
         fillUp.setLiters(Double.parseDouble(etPurchasedLiters.getText().toString()));

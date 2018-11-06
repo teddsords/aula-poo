@@ -17,36 +17,36 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<FillUp> fillUps = new ArrayList<FillUp>();
-        fillUps = FillUpDAO.getList(this.getApplicationContext());
-        TextView tvKilometerPerLiter = findViewById(R.id.tvKilometersPerLiter);
-        TextView tvResult =findViewById(R.id.tvResult);
-
-        NumberFormat nF = DecimalFormat.getInstance();
-        nF.setMaximumFractionDigits(2);
-
-        if (fillUps.size() > 1)
-        {
-            double liters = 0;
-            double fuelEconomy;
-            double totalKms;
-
-            totalKms = fillUps.get(fillUps.size()-1).getKilometers() - fillUps.get(0).getKilometers();
-            for (int i = 0; i < fillUps.size()-1; i++)
-                liters += fillUps.get(i).getLiters();
-
-            fuelEconomy = totalKms / liters;
-
-            tvResult.setText(String.valueOf(nF.format(fuelEconomy)));
-            tvResult.setVisibility(View.VISIBLE);
-            tvKilometerPerLiter.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            tvResult.setText(getText(R.string.Unavailable));
-            tvResult.setVisibility(View.VISIBLE);
-
-        }
+//        ArrayList<FillUp> fillUps = new ArrayList<FillUp>();
+//        fillUps = FillUpDAO.getList(this.getApplicationContext());
+//        TextView tvKilometerPerLiter = findViewById(R.id.tvKilometersPerLiter);
+//        TextView tvResult =findViewById(R.id.tvResult);
+//
+//        NumberFormat nF = DecimalFormat.getInstance();
+//        nF.setMaximumFractionDigits(2);
+//
+//        if (fillUps.size() > 1)
+//        {
+//            double liters = 0;
+//            double fuelEconomy;
+//            double totalKms;
+//
+//            totalKms = fillUps.get(fillUps.size()-1).getKilometers() - fillUps.get(0).getKilometers();
+//            for (int i = 0; i < fillUps.size()-1; i++)
+//                liters += fillUps.get(i).getLiters();
+//
+//            fuelEconomy = totalKms / liters;
+//
+//            tvResult.setText(String.valueOf(nF.format(fuelEconomy)));
+//            tvResult.setVisibility(View.VISIBLE);
+//            tvKilometerPerLiter.setVisibility(View.VISIBLE);
+//        }
+//        else
+//        {
+//            tvResult.setText(getText(R.string.Unavailable));
+//            tvResult.setVisibility(View.VISIBLE);
+//
+//        }
     }
 
     @Override
