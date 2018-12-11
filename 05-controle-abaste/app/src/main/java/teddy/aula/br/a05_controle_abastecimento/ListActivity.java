@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class ListActivity extends AppCompatActivity {
 
-    private final int ADD_FILLUP = 1312;
+    public static final int ADD_FILLUP = 1312;
     private listAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class ListActivity extends AppCompatActivity {
             if(resultCode == 1){
                 this.adapter.notifyDataSetChanged();
             }else{
-                Toast.makeText(this.getApplicationContext(), "Ahm what?", Toast.LENGTH_LONG).show();
+                Toast.makeText(this.getApplicationContext(), "Ahm what?", Toast.LENGTH_SHORT).show();
             }
         }else{
             Toast.makeText(this.getApplicationContext(), "F*cked up", Toast.LENGTH_SHORT).show();

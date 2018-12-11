@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity{
     {
         super.onResume();
         setContentView(R.layout.activity_main);
-        ArrayList<FillUp> fillUps = new ArrayList<FillUp>();
+        ArrayList<FillUp> fillUps;
         fillUps = FillUpDAO.getList(this.getApplicationContext());
 
         NumberFormat nF = DecimalFormat.getInstance();

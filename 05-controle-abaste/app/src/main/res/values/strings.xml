@@ -7,9 +7,14 @@
     <string name="Error">Please inform the correct amount of kilometers</string>
     <string name="ActualKms">Actual Kilometers</string>
     <string name="Liters">Liters Bought</string>
-    <string name="Date">Date</string>
+    <string name="Date">Date: %1$s</string>
+    <string name="Date2">Date </string>
+    <string name="Kilometers">Kilometers:</string>
+    <string name="Longitude">Longitude:</string>
+    <string name="Latitude">Latitude:</string>
     <string name="GasStation">Gas Station</string>
     <string name="Unavailable">Unavailable</string>
+    <string name="ViewInMap">View in map</string>
     <string name="error_kilometers">Please inform a value for kilometers</string>
     <string name="error_liter">Please inform a value for liters</string>
     <string name="error_date">Please inform a date</string>
@@ -19,4 +24,5 @@
         <item>Shell</item>
         <item>Texaco</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>

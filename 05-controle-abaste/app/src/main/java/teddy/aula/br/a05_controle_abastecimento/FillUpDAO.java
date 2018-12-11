@@ -1,71 +1,68 @@
 package teddy.aula.br.a05_controle_abastecimento;
 
+import android.content.ContentValues;
 import android.content.Context;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
 import java.util.ArrayList;
+
 
 public class FillUpDAO {
 
     private static ArrayList<FillUp> Cache = new ArrayList<FillUp>();
-    public static final String fileName = "Fillup.txt";
 
-    public static boolean fileSave (Context context, FillUp object)
+    public static boolean save (Context context, FillUp object)
     {
+        DbHelper helper = new DbHelper (context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        ContentValues data = new ContentValues();
+        data.put("km" , object.getKilometers());
+        data.put("litros" , object.getLiters());
+        data.put("latitude" , object.getLatitude());
+        data.put("longitude" , object.getLongitude());
+        data.put("date" , object.getDate());
+        data.put("posto" , object.getGasStation());
+        long id = db.insert("fillup", null, data);
+        object.setId(id);
+
         Cache.add(object);
-        String save = "";
-        save +=  object.getKilometers() + "&";
-        save +=  object.getLiters() + "&";
-        save +=  object.getDate() + "&";
-        save +=  object.getGasStation() + "\n";
-
-        File refFile = new File(context.getFilesDir().getPath() + fileName);
-
-        try
-        {
-            FileWriter writer = new FileWriter(refFile, true);
-            writer.write(save);
-            writer.close();
-            return true;
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            return false;
-        }
+        return true;
     }
 
-    public static ArrayList<FillUp> getList (Context context)
+    public static boolean delete (Context context, FillUp Del)
+    {
+        DbHelper db = new DbHelper(context);
+        SQLiteDatabase database = db.getWritableDatabase();
+
+        String[] whereID = {String.valueOf(Del.getId())};
+        database.delete("fillup", "id = ?", whereID);
+        getList(context);
+        return true;
+    }
+
+    public static ArrayList <FillUp> getList (Context context)
     {
         Cache = new ArrayList<FillUp>();
 
-        File refFile = new File(context.getFilesDir().getPath() + fileName);
-        try
+        DbHelper db = new DbHelper(context);
+        SQLiteDatabase database = db.getReadableDatabase();
+
+        String lookUp = "SELECT km, litros, latitude, longitude, date, posto, id FROM fillup";
+        Cursor cursor = database.rawQuery(lookUp, null);
+
+        while (cursor.moveToNext())
         {
-            FileReader reader = new FileReader(refFile);
-            BufferedReader lineReader = new BufferedReader(reader);
+            FillUp next = new FillUp();
+            next.setKilometers(cursor.getDouble(0));
+            next.setLiters(cursor.getDouble(1));
+            next.setLatitude(cursor.getDouble(2));
+            next.setLongitude(cursor.getDouble(3));
+            next.setDate(cursor.getString(4));
+            next.setGasStation(cursor.getString(5));
+            next.setId(cursor.getLong(6));
 
-            String fillUpLine = null;
-
-            while((fillUpLine = lineReader.readLine()) != null)
-            {
-                String [] lineParts =fillUpLine.split("&");
-                FillUp fillUp = new FillUp();
-                fillUp.setKilometers(Double.parseDouble(lineParts[0]));
-                fillUp.setLiters(Double.parseDouble(lineParts[1]));
-                fillUp.setDate(lineParts[2]);
-                fillUp.setGasStation(lineParts[3]);
-
-                Cache.add(fillUp);
-            }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-
+            Cache.add(next);
         }
         return Cache;
     }
