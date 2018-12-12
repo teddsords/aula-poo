@@ -23,8 +23,6 @@ public class AddFillUpActivity extends AppCompatActivity {
     private EditText etActualKms;
     private EditText etPurchasedLiters;
     private EditText etDate;
-    private TextView textView;
-    private TextView textView2;
     private double oldKm;
     private FillUp fillUpToSave = new FillUp();
     private LocationManager locationManager;
@@ -43,8 +41,6 @@ public class AddFillUpActivity extends AppCompatActivity {
         etActualKms = findViewById(R.id.etActualKilometers);
         etPurchasedLiters = findViewById(R.id.etLitersBought);
         etDate = findViewById(R.id.etPurchaseDate);
-        textView = findViewById(R.id.textView);
-        textView2 = findViewById(R.id.textView2);
 
         oldKm = this.getIntent().getDoubleExtra("Old km", -1);
 
@@ -87,8 +83,6 @@ public class AddFillUpActivity extends AppCompatActivity {
                     fillUpToSave.setLongitude(location.getLongitude());
                     Log.d("Longitude", Double.toString(fillUpToSave.getLongitude()));
 
-                    textView.setText(String.valueOf(fillUpToSave.getLatitude()));
-                    textView2.setText(String.valueOf(fillUpToSave.getLongitude()));
                 }
 
                 @Override
@@ -128,9 +122,6 @@ public class AddFillUpActivity extends AppCompatActivity {
             return;
         }
         getLocation(fillUpToSave);
-        //fillUpToSave = new FillUp();
-
-
 
         fillUpToSave.setKilometers(Double.parseDouble(etActualKms.getText().toString()));
         fillUpToSave.setLiters(Double.parseDouble(etPurchasedLiters.getText().toString()));
