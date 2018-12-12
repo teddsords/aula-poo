@@ -9,6 +9,7 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -22,6 +23,8 @@ public class AddFillUpActivity extends AppCompatActivity {
     private EditText etActualKms;
     private EditText etPurchasedLiters;
     private EditText etDate;
+    private TextView textView;
+    private TextView textView2;
     private double oldKm;
     private FillUp fillUpToSave = new FillUp();
     private LocationManager locationManager;
@@ -40,13 +43,20 @@ public class AddFillUpActivity extends AppCompatActivity {
         etActualKms = findViewById(R.id.etActualKilometers);
         etPurchasedLiters = findViewById(R.id.etLitersBought);
         etDate = findViewById(R.id.etPurchaseDate);
+        textView = findViewById(R.id.textView);
+        textView2 = findViewById(R.id.textView2);
 
         oldKm = this.getIntent().getDoubleExtra("Old km", -1);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
+        getLocation(fillUpToSave);
     }
 
     @Override
@@ -73,7 +83,12 @@ public class AddFillUpActivity extends AppCompatActivity {
                 public void onLocationChanged(Location location) {
                     location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
                     fillUpToSave.setLatitude(location.getLatitude());
+                    Log.d("Latitude", Double.toString(fillUpToSave.getLatitude()));
                     fillUpToSave.setLongitude(location.getLongitude());
+                    Log.d("Longitude", Double.toString(fillUpToSave.getLongitude()));
+
+                    textView.setText(String.valueOf(fillUpToSave.getLatitude()));
+                    textView2.setText(String.valueOf(fillUpToSave.getLongitude()));
                 }
 
                 @Override
@@ -112,9 +127,10 @@ public class AddFillUpActivity extends AppCompatActivity {
             etActualKms.setError(getString(R.string.Error));
             return;
         }
-
         getLocation(fillUpToSave);
-        fillUpToSave = new FillUp();
+        //fillUpToSave = new FillUp();
+
+
 
         fillUpToSave.setKilometers(Double.parseDouble(etActualKms.getText().toString()));
         fillUpToSave.setLiters(Double.parseDouble(etPurchasedLiters.getText().toString()));

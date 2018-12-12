@@ -30,17 +30,6 @@ public class FillUpDAO {
         return true;
     }
 
-    public static boolean delete (Context context, FillUp Del)
-    {
-        DbHelper db = new DbHelper(context);
-        SQLiteDatabase database = db.getWritableDatabase();
-
-        String[] whereID = {String.valueOf(Del.getId())};
-        database.delete("fillup", "id = ?", whereID);
-        getList(context);
-        return true;
-    }
-
     public static ArrayList <FillUp> getList (Context context)
     {
         Cache = new ArrayList<FillUp>();

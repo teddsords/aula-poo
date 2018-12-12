@@ -15,8 +15,8 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        String SQLCreatingTable = "CREATE TABLE fillUp (" + "ID INTEGER PRIMARY KEY AUTOINCREMENT," + "KM REAL,"
-                + "LITROS REAL," + "LATITUDE REAL," + "LONGITUDE REAL," + "DATE TEXT," + "POSTO TEXT "
+        String SQLCreatingTable = "CREATE TABLE fillUp (" + "ID INTEGER PRIMARY KEY AUTOINCREMENT," + "KM DOUBLE,"
+                + "LITROS DOUBLE," + "LATITUDE DOUBLE," + "LONGITUDE DOUBLE," + "DATE TEXT," + "POSTO TEXT "
                 + ");";
         db.execSQL(SQLCreatingTable);
     }

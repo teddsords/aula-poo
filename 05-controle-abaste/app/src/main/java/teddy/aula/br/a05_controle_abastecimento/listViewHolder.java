@@ -71,6 +71,7 @@ public class listViewHolder extends RecyclerView.ViewHolder {
         this.tvKilometers.setText(kilometers);
         this.tvDate.setText(date);
 
+
         if (gasStation.equals("Ipiranga"))
             ivGasStation.setImageResource(R.drawable.ipiranga);
         else if (gasStation.equals("Petrobras"))

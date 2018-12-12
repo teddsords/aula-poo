@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ public class ListActivity extends AppCompatActivity {
 
     public static final int ADD_FILLUP = 1312;
     private listAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,20 @@ public class ListActivity extends AppCompatActivity {
 
         this.adapter = new listAdapter();
         this.adapter.list = FillUpDAO.getList(this.getApplicationContext());
+
+
+        rvFillUpList.setAdapter(this.adapter);
+        rvFillUpList.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
+    }
+    @Override
+     public void onResume()
+    {
+        super.onResume();
+        RecyclerView rvFillUpList = findViewById(R.id.rvLista);
+
+        this.adapter = new listAdapter();
+        this.adapter.list = FillUpDAO.getList(this.getApplicationContext());
+
 
         rvFillUpList.setAdapter(this.adapter);
         rvFillUpList.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
